@@ -17,7 +17,7 @@
             <div class="bg-white shadow-sm sm:rounded-lg">
                 
                 <div class="p-6 bg-white border-b border-gray-200">
-                <table class="table w-full">
+                <table class="table w-full text-center">
                     <thead>
                         <tr>
                         <th>Id</th>

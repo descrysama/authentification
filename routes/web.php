@@ -4,6 +4,7 @@ use App\Http\Controllers\users;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\planController;
+use App\Http\Controllers\attackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 Route::get('/purchase', [planController::class, 'showAll'])->middleware(['auth'])->name('purchase');
+Route::get('/attack', [attackController::class, 'index'])->middleware(['auth'])->name('attack');
 
 
 // ADMIN
