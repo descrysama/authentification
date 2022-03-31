@@ -41,10 +41,13 @@
                             @endswitch
                             <label class="m-2" for="Rank">Rank :</label>
                                 <select name="rank" id="Rank">
-                                    <option value="{{$currentplan->id}}">{{$currentplan->name}}</option>
-                                    @foreach($plans as $plan)
+                                    @if ($user->rank > 0)
+                                        <option value="{{$currentplan->id}}">{{$currentplan->name}}</option>
+                                    @endif
+                                        @foreach($plans as $plan)
                                         <option value="{{$plan->id}}">{{$plan->name}}</option>
                                     @endforeach
+                                    <option value="0">None</option>
                                 </select>
                         <input class="submitbutton" type="submit" value="Valider">
                     </form>
