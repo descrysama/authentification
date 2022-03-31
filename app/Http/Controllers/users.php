@@ -35,7 +35,7 @@ class users extends Controller
             $user = User::find($id);
             $input = $request->all();
             $user->update($input);
-            return redirect('/users');
+            return redirect('/admin');
         } else {
             return redirect('/dashboard');
         }
@@ -45,7 +45,7 @@ class users extends Controller
     {
         if (Auth::user()->role == 1){
             User::find($id)->delete();
-            return redirect('/users');
+            return redirect('/admin');
         } else {
             return redirect('/dashboard');
         }
@@ -56,7 +56,7 @@ class users extends Controller
         if (Auth::user()->role == 1){
             $user = User::find($id);
             $user->update(['role' => '2']);
-            return redirect('/users');
+            return redirect('/admin');
         } else {
             return redirect('/dashboard');
         }

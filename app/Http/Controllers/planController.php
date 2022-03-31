@@ -31,6 +31,12 @@ class planController extends Controller
     public function update(Request $request, $id)
     {
         if (Auth::user()->role == 1){
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'price' => ['required', 'integer'],
+                'length' => ['required', 'integer'],
+                'days' => ['required', 'integer']
+            ]);
             $plan = plan::find($id);
             $input = $request->all();
             $plan->update($input);

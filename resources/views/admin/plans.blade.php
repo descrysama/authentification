@@ -11,7 +11,11 @@
             </div>
         </h2>
     </x-slot>
-
+    <div class="py-6">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <a href="{{route('createplan')}}" class="submitbutton">Create</a>
+        </div>    
+    </div>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow-sm sm:rounded-lg">
@@ -19,7 +23,6 @@
                 <table class="table w-full">
                     <thead>
                         <tr>
-                        <th>Id</th>
                         <th>Name</th>
                         <th>Price</th>
                         <th>Attack Duration</th>
@@ -30,7 +33,6 @@
                     <tbody>
                         @foreach($plans as $plan)
                         <tr>
-                            <td>{{$plan->id}}</td>
                             <td>{{$plan->name}}</td>
                             <td>{{$plan->price}} €</td>
                             <td>{{$plan->length}} seconds</td>
@@ -66,7 +68,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                <a href="{{route('createplan')}}" class="submitbutton">Create</a>
                 </div>
                 
             </div>
