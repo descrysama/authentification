@@ -21,33 +21,21 @@
                     <thead>
                         <tr>
                         <th>Id</th>
-                        <th>Nom</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Date d'inscription</th>
-                        <th>Derniere Modification</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Attack Duration</th>
+                        <th>Length</th>
                         <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($plans as $plan)
                         <tr>
-                            <td>{{$user->id}}</td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
-                            @switch ($user->role)
-                                @case(2)
-                                    <td style="color: purple; font-weight: 900;">BANNED</td>
-                                @break
-                                @case(1)
-                                <td style="color: red;">Admin</td>
-                                @break
-                                @case(0)
-                                <td style="color: blue;">User</td>
-                                @break
-                            @endswitch
-                            <td>{{$user->created_at}}</td>
-                            <td>{{$user->updated_at}}</td>
+                            <td>{{$plan->id}}</td>
+                            <td>{{$plan->name}}</td>
+                            <td>{{$plan->price}} €</td>
+                            <td>{{$plan->length}} seconds</td>
+                            <td>{{$plan->days}} days</td>
                             <td>
                                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                                     <x-dropdown width="48">
@@ -66,13 +54,10 @@
                                         <x-slot name="content">
                                             <!-- Authentication -->
                                             @if (Auth::user()->role == 1)
-                                            <x-dropdown-link :href="url('users', $user->id)">{{ __('Edit') }}</x-dropdown-link>
+                                            <x-dropdown-link :href="url('plans', $plan->id)">{{ __('Edit') }}</x-dropdown-link>
                                             @endif
                                             @if (Auth::user()->role == 1)
-                                            <x-dropdown-link  style="color:red;" :href="url('users/delete', $user->id)">{{ __('Delete') }}</x-dropdown-link>
-                                            @endif
-                                            @if (Auth::user()->role == 1 && $user->role != 2)
-                                            <x-dropdown-link  style="color:red;" :href="url('users/ban', $user->id)">{{ __('Ban') }} !</x-dropdown-link>
+                                            <x-dropdown-link  style="color:red;" :href="url('plans/delete', $plan->id)">{{ __('Delete') }}</x-dropdown-link>
                                             @endif
                                         </x-slot>
                                     </x-dropdown>

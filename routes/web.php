@@ -27,12 +27,20 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+Route::get('/purchase', [planController::class, 'showAll'])->middleware(['auth'])->name('purchase');
 
-Route::get('/purchase', [planController::class, 'show'])->middleware(['auth'])->name('purchase');
+
+// ADMIN
+
+
+Route::get('/admin', [users::class, 'showAll'])->middleware(['auth'])->name('admin');
+
+Route::get('/plans', [planController::class, 'listall'])->name('plans');
+Route::get('plans/{id}', [planController::class, 'edit'])->middleware(['auth'])->name('editplans');
+Route::post('plans/update/{id}', [planController::class, 'update'])->middleware(['auth'])->name('updateplan');
+Route::get('users/{id}', [users::class, 'edit'])->middleware(['auth'])->name('edit');
 Route::get('/users/delete/{id}', [users::class , 'deleteUser'])->middleware(['auth'])->name('delete');
 Route::get('users/ban/{id}', [users::class , 'banUser'])->middleware(['auth'])->name('ban');
 Route::post('/update/{id}', [users::class , 'update'])->middleware(['auth'])->name('update');
-Route::get('/users', [users::class, 'showAll'])->middleware(['auth'])->name('users');
-Route::get('users/{id}', [users::class, 'edit'])->middleware(['auth'])->name('edit');
 
 require __DIR__.'/auth.php';

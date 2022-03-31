@@ -39,7 +39,7 @@
                     <x-slot name="content">
                         <!-- Authentication -->
                         @if (Auth::user()->role == 1)
-                        <x-dropdown-link :href="route('users')">{{ __('Users') }}</x-dropdown-link>
+                        <x-dropdown-link :href="route('admin')">{{ __('Admin') }}</x-dropdown-link>
                         @endif
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -87,7 +87,7 @@
             <div class="mt-3 space-y-1">
                 <!-- Authentication -->
                 @if (Auth::user()->role == 1)
-                    <x-dropdown-link :href="route('users')">{{ __('Users') }}</x-dropdown-link>
+                    <x-dropdown-link :href="route('admin')">{{ __('Admin') }}</x-dropdown-link>
                 @endif
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
