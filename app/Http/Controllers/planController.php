@@ -60,9 +60,9 @@ class planController extends Controller
         if (Auth::user()->role == 1){
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
-                'price' => ['required', 'integer', 'max:11'],
-                'length' => ['required', 'integer', 'max:11'],
-                'days' => ['required', 'integer', 'max:11']
+                'price' => ['required', 'integer'],
+                'length' => ['required', 'integer'],
+                'days' => ['required', 'integer']
             ]);
             $input = $request->all();
             
