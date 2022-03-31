@@ -25,7 +25,7 @@ class attackController extends Controller
             'length' => ['required', 'integer', planController::check(Auth::user()->rank)],
             'method' => ['required', 'string']
         ]);
-        
+        //api layer4 attack
         attack::create(['ip' => $request->ip, 'port' => $request->port, 'length' => $request->length, 'method' => $request->method,'sender_id'=> Auth::user()->id]);
         return redirect('/attack');
     }
@@ -35,6 +35,7 @@ class attackController extends Controller
         $attack = attack::find($id);
         $attack->state = 0;
         $attack->save();
+        //api layer4 stop
         return redirect('/attack');
     }
 }
