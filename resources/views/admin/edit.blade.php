@@ -12,33 +12,40 @@
                 <div class="p-6 bg-white border-b border-gray-200 w-full flex justify-center">
                     <form class="flex flex-col w-half" action="{{url('update', $user->id)}}" method="POST">
                         @csrf
-                        <label for="Nom"></label>
-                        <input id="Nom" type="text" name="name" placeholder="Nom" value="{{$user->name}}">
-                        <label for="Email"></label>
+                        <label class="m-2" for="Name">Name :</label>
+                        <input id="Name" type="text" name="name" placeholder="Name" value="{{$user->name}}">
+                        <label class="m-2" for="Email">Email :</label>
                         <input id="Email" type="email" name="email" placeholder="Email" value="{{$user->email}}">
-                        @switch($user->role)
+                            @switch($user->role)
                                 @case(2)
-                                <label for="idrole">Role :</label>
+                                <label class="m-2" for="idrole">Role :</label>
                                 <select name="role" id="idrole">
                                     <option value="2">Ban</option>
                                     <option value="0">Unban</option>
                                 </select>
                                 @break
                                 @case(1)
-                                <label for="idrole">Role :</label>
+                                <label class="m-2" for="idrole">Role :</label>
                                 <select name="role" id="idrole">
                                     <option value="1">Admin</option>
                                     <option value="0">User</option>
                                 </select>
                                 @break
                                 @case(0)
-                                <label for="idrole">Role :</label>
+                                <label class="m-2" for="idrole">Role :</label>
                                 <select name="role" id="idrole">
                                     <option value="0">User</option>
                                     <option value="1">Admin</option>
                                 </select>
                                 @break
-                            @endswitch   
+                            @endswitch
+                            <label class="m-2" for="Rank">Rank :</label>
+                                <select name="rank" id="Rank">
+                                    <option value="{{$currentplan->id}}">{{$currentplan->name}}</option>
+                                    @foreach($plans as $plan)
+                                        <option value="{{$plan->id}}">{{$plan->name}}</option>
+                                    @endforeach
+                                </select>
                         <input class="submitbutton" type="submit" value="Valider">
                     </form>
                 </div>

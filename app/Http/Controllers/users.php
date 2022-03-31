@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\plan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
@@ -31,7 +32,9 @@ class users extends Controller
     {
         if (Auth::user()->role == 1){
             $user = User::find($id);
-            return view('admin.edit', ['user' => $user]);
+            $plans = plan::all()->except($user->rank);
+            $currentplan = plan::find($user->rank);
+            return view('admin.edit', ['user' => $user, 'plans' => $plans, 'currentplan' => $currentplan]);
         } else {
             return redirect('/dashboard');
         }
