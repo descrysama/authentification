@@ -37,6 +37,7 @@
                             <th>Port</th>
                             <th>Date</th>
                             <th>Actions</th>
+                            <th>State</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,7 +47,16 @@
                             <td>{{$attack->method}}</td>
                             <td>{{$attack->length}}</td>
                             <td>{{$attack->port}}</td>
-                            <td>{{$attack->create_at}}</td>
+                            <td>{{$attack->created_at}}</td>
+                                @switch($attack->state)
+                                    @case(1)
+                                        <td style="color: red; font-weight: 700;">Running</td>
+                                    @break
+
+                                    @case(0)
+                                        <td style="color: green; font-weight: 700;">Finished</td>
+                                    @break
+                                @endswitch
                             <td><a href="attack/stop/{{$attack->state}}"><input class="submitbutton" type="submit" value="Stop"></a></td>
                         </tr>
                         @endforeach
