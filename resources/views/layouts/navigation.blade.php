@@ -44,6 +44,7 @@
                         @if (Auth::user()->role == 1)
                         <x-dropdown-link :href="route('admin')">{{ __('Admin') }}</x-dropdown-link>
                         @endif
+                        <x-dropdown-link :href="route('profile')">{{ __('Profile') }}</x-dropdown-link>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 

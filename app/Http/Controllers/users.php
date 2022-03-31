@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class users extends Controller
 {
@@ -17,6 +19,12 @@ class users extends Controller
             return redirect('/dashboard');
         }
         
+    }
+
+    public function showProfile()
+    {
+        $user = user::find(Auth::user()->id);
+        return view('dashboard.profile', ['user' => $user]);
     }
 
     public function edit($id)
@@ -39,6 +47,17 @@ class users extends Controller
         } else {
             return redirect('/dashboard');
         }
+    }
+
+    public function selfupdate(Request $request)
+    {
+        $request->validate([
+            'password' => ['required', new MatchOldPassword],
+            'email' => ['required', 'email'],
+            'new_confirm_password' => ['same:new_password']
+        ]);
+        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password), 'email'=> $request->email]);
+        return redirect('/profile');
     }
 
     public function deleteUser($id)

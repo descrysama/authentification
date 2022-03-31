@@ -26,9 +26,9 @@ Route::get('/', function () {
     }
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', function () {return view('dashboard');})->middleware(['auth'])->name('dashboard');
+Route::get('/profile', [users::class, 'showProfile'])->middleware(['auth'])->name('profile');
+Route::post('/profile', [users::class, 'selfupdate'])->middleware(['auth'])->name('selfupdate');
 Route::get('/purchase', [planController::class, 'showAll'])->middleware(['auth'])->name('purchase');
 Route::get('/attack', [attackController::class, 'index'])->middleware(['auth'])->name('attack');
 
@@ -49,8 +49,6 @@ Route::get('users/{id}', [users::class, 'edit'])->middleware(['auth'])->name('ed
 Route::get('/users/delete/{id}', [users::class , 'deleteUser'])->middleware(['auth'])->name('delete');
 Route::get('users/ban/{id}', [users::class , 'banUser'])->middleware(['auth'])->name('ban');
 Route::post('/update/{id}', [users::class , 'update'])->middleware(['auth'])->name('update');
-
-
 
 Route::post('methods/create', [methodsController::class, 'store'])->middleware(['auth'])->name('storemethod');
 Route::get('methods/create', [methodsController::class, 'create'])->middleware(['auth'])->name('createmethod');
