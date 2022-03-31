@@ -7,7 +7,8 @@
     <div class="py-12 text-center">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden flex justify-center shadow-sm sm:rounded-lg">
-                <form class="flex flex-col" action="" method="POST">
+                <form class="flex flex-col" action="{{route('l4attack')}}" method="POST">
+                    @csrf
                     <label class="m-2" for="ip">Ip address  :</label>
                     <input type="text" name="ip" id="ip" placeholder="78.193.102.103">
                     <label class="m-2" for="ip">Port :</label>
@@ -17,7 +18,7 @@
                     <label class="m-2" for="method"> Method :</label>
                                 <select name="method" id="method">
                                     @foreach($methods as $method)
-                                    <option value="{{$method}}">{{$method->name}}</option>
+                                    <option value="{{$method->name}}">{{$method->name}}</option>
                                     @endforeach
                                 </select>
                     <input class="submitbutton" type="submit" value="Attack">
@@ -57,7 +58,14 @@
                                         <td style="color: green; font-weight: 700;">Finished</td>
                                     @break
                                 @endswitch
-                            <td><a href="attack/stop/{{$attack->state}}"><input class="submitbutton" type="submit" value="Stop"></a></td>
+                            @if($attack->state == 1)
+                            <td>
+                                <form action="{{url('/attack/stop', $attack->id)}}" method="POST">
+                                    @csrf
+                                    <input class="submitbutton" type="submit" value="Stop">
+                                </form>
+                            </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>

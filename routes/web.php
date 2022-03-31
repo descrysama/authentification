@@ -31,6 +31,8 @@ Route::get('/profile', [users::class, 'showProfile'])->middleware(['auth'])->nam
 Route::post('/profile', [users::class, 'selfupdate'])->middleware(['auth'])->name('selfupdate');
 Route::get('/purchase', [planController::class, 'showAll'])->middleware(['auth'])->name('purchase');
 Route::get('/attack', [attackController::class, 'index'])->middleware(['auth'])->name('attack');
+Route::post('/attack', [attackController::class, 'l4attack'])->middleware(['auth'])->name('l4attack');
+Route::post('/attack/stop/{id}', [attackController::class, 'stopAttack'])->middleware(['auth']);
 
 
 // ADMIN

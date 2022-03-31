@@ -78,4 +78,12 @@ class planController extends Controller
             return redirect('/dashboard');
         }
     }
+
+    public static function check($id)
+    {
+        $plan = plan::find($id);
+        if ($plan->length) {
+            return 'max:'.$plan->length;
+        }
+    }
 }

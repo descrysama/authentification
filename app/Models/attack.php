@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class attack extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'ip',
+        'port',
+        'length',
+        'method',
+        'sender_id'
+    ];
 }
