@@ -14,7 +14,11 @@
             </div>
         </h2>
     </x-slot>
-
+    <div class="py-6">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <a href="{{route('createmethod')}}" class="submitbutton">Create</a>
+        </div>    
+    </div>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow-sm sm:rounded-lg">
@@ -24,33 +28,15 @@
                     <thead>
                         <tr>
                         <th>Id</th>
-                        <th>Nom</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Date d'inscription</th>
-                        <th>Derniere Modification</th>
+                        <th>Name</th>
                         <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($methods as $method)
                         <tr>
-                            <td>{{$user->id}}</td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
-                            @switch ($user->role)
-                                @case(2)
-                                    <td style="color: purple; font-weight: 900;">BANNED</td>
-                                @break
-                                @case(1)
-                                <td style="color: red;">Admin</td>
-                                @break
-                                @case(0)
-                                <td style="color: blue;">User</td>
-                                @break
-                            @endswitch
-                            <td>{{$user->created_at}}</td>
-                            <td>{{$user->updated_at}}</td>
+                            <td>{{$method->id}}</td>
+                            <td>{{$method->name}}</td>
                             <td class="flex justify-center">
                                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                                     <x-dropdown width="48">
@@ -69,13 +55,7 @@
                                         <x-slot name="content">
                                             <!-- Authentication -->
                                             @if (Auth::user()->role == 1)
-                                            <x-dropdown-link :href="url('users', $user->id)">{{ __('Edit') }}</x-dropdown-link>
-                                            @endif
-                                            @if (Auth::user()->role == 1)
-                                            <x-dropdown-link  style="color:red;" :href="url('users/delete', $user->id)">{{ __('Delete') }}</x-dropdown-link>
-                                            @endif
-                                            @if (Auth::user()->role == 1 && $user->role != 2)
-                                            <x-dropdown-link  style="color:red;" :href="url('users/ban', $user->id)">{{ __('Ban') }} !</x-dropdown-link>
+                                            <x-dropdown-link  style="color:red;" :href="url('methods/delete', $method->id)">{{ __('Delete') }}</x-dropdown-link>
                                             @endif
                                         </x-slot>
                                     </x-dropdown>

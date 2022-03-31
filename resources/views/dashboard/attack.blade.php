@@ -17,7 +17,7 @@
                     <label class="m-2" for="method"> Method :</label>
                                 <select name="method" id="method">
                                     @foreach($methods as $method)
-                                    <option value="{{$method}}">{{$method}}</option>
+                                    <option value="{{$method}}">{{$method->name}}</option>
                                     @endforeach
                                 </select>
                     <input class="submitbutton" type="submit" value="Attack">

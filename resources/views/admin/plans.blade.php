@@ -8,6 +8,9 @@
                 <x-nav-link :href="route('plans')" :active="request()->routeIs('plans')">
                     {{ __('Plans') }}
                 </x-nav-link>
+                <x-nav-link :href="route('methods')" :active="request()->routeIs('methods')">
+                    {{ __('Methods') }}
+                </x-nav-link>
             </div>
         </h2>
     </x-slot>
@@ -37,7 +40,7 @@
                             <td>{{$plan->price}} €</td>
                             <td>{{$plan->length}} seconds</td>
                             <td>{{$plan->days}} days</td>
-                            <td>
+                            <td class="flex justify-center">
                                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                                     <x-dropdown width="48">
                                         <x-slot name="trigger">
