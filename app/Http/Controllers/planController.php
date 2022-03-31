@@ -39,4 +39,37 @@ class planController extends Controller
             return redirect('/dashboard');
         }
     }
+
+    public function deletePlan($id)
+    {
+        if (Auth::user()->role == 1){
+            plan::find($id)->delete();
+            return redirect('/plans');
+        } else {
+            return redirect('/dashboard');
+        }
+    }
+
+    public function create()
+    {
+        return view('admin.create');
+    }
+
+    public function store(Request $request)
+    {
+        if (Auth::user()->role == 1){
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'price' => ['required', 'integer', 'max:11'],
+                'length' => ['required', 'integer', 'max:11'],
+                'days' => ['required', 'integer', 'max:11']
+            ]);
+            $input = $request->all();
+            
+            plan::create($input);
+            return redirect('/plans');
+        } else {
+            return redirect('/dashboard');
+        }
+    }
 }

@@ -35,9 +35,14 @@ Route::get('/purchase', [planController::class, 'showAll'])->middleware(['auth']
 
 Route::get('/admin', [users::class, 'showAll'])->middleware(['auth'])->name('admin');
 
+Route::post('/plans/create', [planController::class, 'store'])->middleware(['auth'])->name('storeplan');
+Route::get('/plans/create', [planController::class, 'create'])->middleware(['auth'])->name('createplan');
+
 Route::get('/plans', [planController::class, 'listall'])->name('plans');
-Route::get('plans/{id}', [planController::class, 'edit'])->middleware(['auth'])->name('editplans');
-Route::post('plans/update/{id}', [planController::class, 'update'])->middleware(['auth'])->name('updateplan');
+Route::get('/plans/{id}', [planController::class, 'edit'])->middleware(['auth'])->name('editplan');
+Route::get('/plans/delete/{id}', [planController::class , 'deletePlan'])->middleware(['auth'])->name('deleteplan');
+Route::post('/plans/update/{id}', [planController::class, 'update'])->middleware(['auth'])->name('updateplan');
+
 Route::get('users/{id}', [users::class, 'edit'])->middleware(['auth'])->name('edit');
 Route::get('/users/delete/{id}', [users::class , 'deleteUser'])->middleware(['auth'])->name('delete');
 Route::get('users/ban/{id}', [users::class , 'banUser'])->middleware(['auth'])->name('ban');

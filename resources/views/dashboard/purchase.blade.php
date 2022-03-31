@@ -19,7 +19,7 @@
                                         <p> {{$plan->days}} days</p>
                                         <p> {{$plan->length}} seconds !</p>
                                         <p> Méthods Layer 4 & Layer 7.</p>
-                                        <p> Unlimited Attacks.</p>
+                                        <p> Unlimited Daily Attacks.</p>
                                         <h3>{{$plan->price}} €</h3>
                                         <a href="buy/{{$plan->price}}">Purchase Now</a>
                                     </div>
