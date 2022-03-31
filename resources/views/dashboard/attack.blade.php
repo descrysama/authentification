@@ -43,30 +43,30 @@
                     </thead>
                     <tbody>
                         @foreach($attacks as $attack)
-                        <tr>
-                            <td>{{$attack->ip}}</td>
-                            <td>{{$attack->method}}</td>
-                            <td>{{$attack->length}}</td>
-                            <td>{{$attack->port}}</td>
-                            <td>{{$attack->created_at}}</td>
-                                @switch($attack->state)
-                                    @case(1)
-                                        <td style="color: red; font-weight: 700;">Running</td>
-                                    @break
+                            <tr>
+                                <td>{{$attack->ip}}</td>
+                                <td>{{$attack->method}}</td>
+                                <td>{{$attack->length}}</td>
+                                <td>{{$attack->port}}</td>
+                                <td>{{$attack->created_at}}</td>
+                                    @switch($attack->state)
+                                        @case(1)
+                                            <td style="color: red; font-weight: 700;">Running</td>
+                                        @break
 
-                                    @case(0)
-                                        <td style="color: green; font-weight: 700;">Finished</td>
-                                    @break
-                                @endswitch
-                            @if($attack->state == 1)
-                            <td>
-                                <form action="{{url('/attack/stop', $attack->id)}}" method="POST">
-                                    @csrf
-                                    <input class="submitbutton" type="submit" value="Stop">
-                                </form>
-                            </td>
-                            @endif
-                        </tr>
+                                        @case(0)
+                                            <td style="color: green; font-weight: 700;">Finished</td>
+                                        @break
+                                    @endswitch
+                                @if($attack->state == 1)
+                                <td>
+                                    <form action="{{url('/attack/stop', $attack->id)}}" method="POST">
+                                        @csrf
+                                        <input class="submitbutton m-auto" type="submit" value="Stop">
+                                    </form>
+                                </td>
+                                @endif
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

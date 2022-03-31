@@ -13,6 +13,8 @@ class attack extends Model
         'port',
         'length',
         'method',
-        'sender_id'
+        'launcher_id',
+        'launched_at',
+        'finished_at'
     ];
 }
