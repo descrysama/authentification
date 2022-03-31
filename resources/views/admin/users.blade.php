@@ -29,6 +29,7 @@
                         <th>Role</th>
                         <th>Date d'inscription</th>
                         <th>Derniere Modification</th>
+                        <th>Rank</th>
                         <th>Actions</th>
                         </tr>
                     </thead>
@@ -51,6 +52,7 @@
                             @endswitch
                             <td>{{$user->created_at}}</td>
                             <td>{{$user->updated_at}}</td>
+                            <td>{{$user->rank}}</td>
                             <td class="flex justify-center">
                                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                                     <x-dropdown width="48">

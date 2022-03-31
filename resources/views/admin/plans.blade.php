@@ -26,6 +26,7 @@
                 <table class="table w-full text-center flex justify-center">
                     <thead>
                         <tr>
+                        <th>Id</th>
                         <th>Name</th>
                         <th>Price</th>
                         <th>Attack Duration</th>
@@ -36,6 +37,7 @@
                     <tbody>
                         @foreach($plans as $plan)
                         <tr>
+                            <td>{{$plan->id}}</td>
                             <td>{{$plan->name}}</td>
                             <td>{{$plan->price}} €</td>
                             <td>{{$plan->length}} seconds</td>

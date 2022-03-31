@@ -46,7 +46,7 @@
                             <tr>
                                 <td>{{$attack->ip}}</td>
                                 <td>{{$attack->method}}</td>
-                                <td>{{$attack->length}}</td>
+                                <td>{{$attack->length}} seconds</td>
                                 <td>{{$attack->port}}</td>
                                 <td>{{$attack->created_at}}</td>
                                     @switch($attack->state)
