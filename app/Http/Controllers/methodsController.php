@@ -23,7 +23,7 @@ class methodsController extends Controller
     {
         if (Auth::user()->role == 1){
             method::find($id)->delete();
-            return redirect('/method');
+            return redirect('/methods');
         } else {
             return redirect('/dashboard');
         }
