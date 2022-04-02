@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\planController;
 use App\Http\Controllers\attackController;
 use App\Http\Controllers\methodsController;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ Route::get('/', function () {
     }
 });
 
-Route::get('/dashboard', function () {return view('dashboard');})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [Controller::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 Route::get('/profile', [users::class, 'showProfile'])->middleware(['auth'])->name('profile');
 Route::post('/profile', [users::class, 'selfupdate'])->middleware(['auth'])->name('selfupdate');
 Route::get('/purchase', [planController::class, 'showAll'])->middleware(['auth'])->name('purchase');

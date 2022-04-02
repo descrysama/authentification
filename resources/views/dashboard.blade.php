@@ -5,13 +5,24 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    Bienvenue sur {{ config('app.name') }}. pret à dedose ?!
+    <div class="row mx-auto flex justify-center">
+        <div class="py-12">
+            <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 bg-white border-b border-gray-200">
+                        Total Attacks : {{$attacks->count()}}
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="py-12">
+        <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    Total Users : {{$users->count()}}
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 </x-app-layout>
