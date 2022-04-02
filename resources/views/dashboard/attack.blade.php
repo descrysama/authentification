@@ -62,6 +62,10 @@
                                 <td>
                                     <form action="{{url('/attack/stop', $attack->id)}}" method="POST">
                                         @csrf
+                                        <input type="hidden" name="ip" value="{{$attack->ip}}">
+                                        <input type="hidden" name="port" value="{{$attack->port}}">
+                                        <input type="hidden" name="length" value="{{$attack->length}}">
+                                        <input type="hidden" name="method" value="{{$attack->method}}">
                                         <input class="submitbutton m-auto" type="submit" value="Stop">
                                     </form>
                                 </td>
