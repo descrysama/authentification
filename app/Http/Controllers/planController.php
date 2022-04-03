@@ -82,8 +82,13 @@ class planController extends Controller
     public static function check($id)
     {
         $plan = plan::find($id);
-        if ($plan->length) {
-            return 'max:'.$plan->length;
+        if (isset($plan->length)) {
+            if ($plan->length) {
+                return 'max:'.$plan->length;
+
+            }
+        } else {
+            return 'max:'.'0';
         }
     }
 }

