@@ -34,6 +34,7 @@ Route::get('/purchase', [planController::class, 'showAll'])->middleware(['auth']
 Route::get('/attack', [attackController::class, 'index'])->middleware(['auth'])->name('attack');
 Route::post('/attack', [attackController::class, 'l4attack'])->middleware(['auth'])->name('l4attack');
 Route::post('/attack/stop/{id}', [attackController::class, 'stopAttack'])->middleware(['auth']);
+Route::get('/contact', [attackController::class, 'index'])->middleware(['auth'])->name('contact');
 
 
 // ADMIN

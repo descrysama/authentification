@@ -1,1 +1,1 @@
-<h1>{{ config('app.name') }} !</h1>
+<img src="/img/enigma-logo-b.png" width="100rem" alt="">
